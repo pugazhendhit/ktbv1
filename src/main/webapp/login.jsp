@@ -930,10 +930,12 @@ Script Source
 				valid = validateContact();
 
 				if(valid) {
+					
 					  var firstn = document.getElementById('field1')
 					  var lastn = document.getElementById('field2')
 					  var emailn = document.getElementById('field3')
 					  var passwordn = document.getElementById('field4')
+					  
 					  console.log(firstn.value); 
 					  console.log(lastn.value); 
 					  console.log(emailn.value); 

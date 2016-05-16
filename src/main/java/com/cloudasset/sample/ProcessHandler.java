@@ -16,8 +16,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import com.cloudasset.model.User;
-import com.cloudasset.model.UserHelper;
+import com.cloudasset.model.UserKTB;
+import com.cloudasset.service.LoginService;
 
 public class ProcessHandler extends HttpServlet {
 	
@@ -42,8 +42,9 @@ public class ProcessHandler extends HttpServlet {
 	 		 String json = null;
 	 		
 		     try {
-		    	 
-	    		User user = UserHelper.userMap.get(request.getParameter("s"));
+		    	LoginService service = new LoginService();
+		    
+	    		UserKTB user = service.getUserByUserId(request.getParameter("s"));
 				String uniqueID = UUID.randomUUID().toString();
 				
 				// if customer id is present.
@@ -51,7 +52,7 @@ public class ProcessHandler extends HttpServlet {
 					json ="{\"secret_token\":\"abc123\",\"amount\":\""+request.getParameter("p")+"\","
 						+ "\"currency\":\"THB\","
 						+ "\"status_url\":\"http://ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com/status.do?uuid="+uniqueID+"\","
-						+ "\"customer_id\":\""+user.customerid+"\","
+						+ "\"customer_id\":\""+user.getCustomerid()+"\","
 						+ "\"landing_url\":\"http://ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com/order.jsp?uuid="+uniqueID+"\"}";
 				}else{
 					json ="{\"secret_token\":\"abc123\",\"amount\":\""+request.getParameter("p")+"\","
@@ -77,9 +78,9 @@ public class ProcessHandler extends HttpServlet {
 		               paymentToken = (String) o.get("payment_token");
 		               message = (String) o.get("message");
 		            }
-		        	Global.uuidMAp.put(paymentToken,uniqueID);
+		        //	Global.uuidMAp.put(paymentToken,uniqueID);
 		        	// Adding the Transaction ID to MAP
-		        	Global.invoiceMAp.put(uniqueID,nextIntInRange(START,END,new Random())+"");
+		       // 	Global.invoiceMAp.put(uniqueID,nextIntInRange(START,END,new Random())+"");
 	            }
 			  } catch (Exception e) {
 				e.printStackTrace();

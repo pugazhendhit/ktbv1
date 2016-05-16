@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -16,8 +15,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import com.cloudasset.model.User;
-import com.cloudasset.model.UserHelper;
+import com.cloudasset.model.UserKTB;
+import com.cloudasset.service.RegisterService;
 
 public class RegisterServlet extends HttpServlet {
 	
@@ -65,13 +64,23 @@ public class RegisterServlet extends HttpServlet {
 		               customer_id = (String) o.get("customer_id");
 		            }
 	            }
-	            User user = new User(firstname,lastname,usr,pwd,customer_id);
-	            UserHelper.save(user);
 	            
-	    		HttpSession session = request.getSession();
-				session.setAttribute("user", usr);
-				session.setMaxInactiveInterval(30*60);
-	            responseJson ="{\"status\":\"Registerd Successfully\",\"customer_id\":\""+customer_id+"\"}";
+	            
+	            UserKTB userobj = new UserKTB(customer_id, usr, firstname, lastname, pwd);
+	            RegisterService service = new RegisterService();
+	            boolean result = service.register(userobj);
+	            
+	            if(result){
+	            	
+	            	HttpSession session = request.getSession();
+					session.setAttribute("user", usr);
+					session.setMaxInactiveInterval(30*60);
+					 responseJson ="{\"status\":\"Registerd Successfully\",\"customer_id\":\""+customer_id+"\"}";
+	            }else{
+	            	 responseJson ="{\"status\":\"User already registered.\",\"customer_id\":\""+customer_id+"\"}";
+	            }
+	    	
+	           
 			}
 			response.setContentType("application/json");
 			response.getWriter().write(responseJson);

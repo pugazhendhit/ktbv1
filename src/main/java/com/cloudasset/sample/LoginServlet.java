@@ -1,17 +1,14 @@
 package com.cloudasset.sample;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.cloudasset.model.User;
-import com.cloudasset.model.UserHelper;
+import com.cloudasset.service.LoginService;
 
 
 @WebServlet("/LoginServlet.do")
@@ -25,8 +22,9 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("user");
 		String pwd = request.getParameter("pwd");
 		String responseJson = null;
+		LoginService service = new LoginService();
 		
-		if(UserHelper.contains(user) && ((User)UserHelper.userMap.get(user)).password.equals(pwd)) {
+		if(service.authenticateUser(user, pwd)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			session.setMaxInactiveInterval(30*60);

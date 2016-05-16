@@ -950,7 +950,12 @@ Script Source
 							  console.log('success'); 
 							  console.log(json.status);   // needs to match the payload (i.e. json must have {value: "foo"}
 							  console.log(json.customer_id);  
-							  location.reload();
+							  var str = json.status;
+							  if (str.indexOf("Success") >= 0) {
+								  location.reload();
+							  }else{
+								  document.getElementById("resultStatus").innerHTML = json.status;
+							  }
 							  document.getElementById("resultStatus").innerHTML = 'Registered Succesfully';
 						  },
 						  error:function(){

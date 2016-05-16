@@ -483,7 +483,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>
@@ -493,7 +493,7 @@ Header
                         </td>
                         <td>
                             <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿500</span>
+                            <span class="cart-price">฿250</span>
                         </td>
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
@@ -511,7 +511,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>
@@ -653,12 +653,12 @@ cart content
                             <td>
                                 <div class="quantity-control">
                                     <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                    <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                    <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                     <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                                 </div>
                             </td>
                             <td><span class="cart-price">฿250</span></td>
-                            <td><span class="cart-price">฿500</span></td>
+                            <td><span class="cart-price">฿250</span></td>
                             <td>
                                 <ul class="cart-action">
                                     <li><a href="#" class="btn-cart btn-square style"><i class="fa fa-repeat"></i></a></li>
@@ -682,7 +682,7 @@ cart content
                             <td>
                                 <div class="quantity-control">
                                     <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                    <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                    <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                     <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                                 </div>
                             </td>
@@ -717,8 +717,8 @@ cart content
                                     <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                                 </div>
                             </td>
-                            <td><span class="cart-price"><c:out value="${product.unitPrice}"/></span></td>
-                            <td><span class="cart-price">฿500</span></td>
+                            <td><span class="cart-price">฿<c:out value="${product.unitPrice}"/></span></td>
+                            <td><span class="cart-price">฿<c:out value="${product.unitPrice}"/></span></td>
                             <td>
                                 <ul class="cart-action">
                                     <li><a href="#" class="btn-cart btn-square style"><i class="fa fa-repeat"></i></a></li>
@@ -751,7 +751,11 @@ cart content
                                                 <tr class="cart-subtotal">
                                                     <th>Subtotal</th>
                                                     <td>
-                                                        <span class="amount">฿215.00</span>
+                                                     <c:set var="htotal" value="1750" />
+                                                     <c:forEach items="${cart}" var="product">
+                                                     <c:set var="htotal" value="${htotal+product.unitPrice}" />
+                                                     </c:forEach>
+                                                        <span class="amount">฿${htotal}</span>
                                                     </td>
                                                 </tr>
                                                 <tr class="shipping">
@@ -760,7 +764,7 @@ cart content
                                                         <ul id="shipping_method">
                                                             <li>
                                                                 <label>
-                                                                    <span class="amount">฿7.00</span>
+                                                                    <span class="amount">฿0.00</span>
                                                                 </label>
                                                             </li>
                                                             <li>
@@ -777,7 +781,7 @@ cart content
                                                     <th>Total</th>
                                                     <td>
                                                         <strong>
-                                                            <span class="amount">฿215.00</span>
+                                                            <span class="amount">฿${htotal}</span>
                                                         </strong>
                                                     </td>
                                                 </tr>

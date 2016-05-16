@@ -337,8 +337,9 @@ jQuery(function($) {
             qty: 1,
             stock: true
         };
-
+        
         $imgToDrag = $item.find($container.data('thumbnail'));
+        
         $cart = $('.quickViewWrap');
         $imgClone = $imgToDrag.clone();
         $imgClone.offset({

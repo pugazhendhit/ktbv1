@@ -3,7 +3,8 @@
 <!--[if gt IE 9]><!-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import="java.util.List"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 
 <html class="no-js">
 <!--<![endif]-->
@@ -526,6 +527,7 @@ Header
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
                         </td>
                         </tr> 
+                       
                         <tr class="table-body style">
                             <td></td>
                             <td>
@@ -694,6 +696,39 @@ cart content
                                 </ul>
                             </td>
                           </tr> 
+                          
+                           <c:forEach items="${cart}" var="product">
+                            <tr class="table-body">
+                            <td><figure><img src="<c:out value="${product.imagepath}"/>" alt=""/></figure></td>
+                            <td>
+                                <div class="cart-wrappper text-left">
+                                    <h6><c:out value="${product.name}"/></h6>
+                                    <div class="xv-rating stars-5"></div>
+                                    <p><span>Availability</span>: Available in Stock</p>
+                                    <p><span>Product Code</span>: CwT4a</p> 
+                                </div>                             
+                            </td> 
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <div class="quantity-control">
+                                    <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
+                                    <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                    <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
+                                </div>
+                            </td>
+                            <td><span class="cart-price"><c:out value="${product.unitPrice}"/></span></td>
+                            <td><span class="cart-price">฿500</span></td>
+                            <td>
+                                <ul class="cart-action">
+                                    <li><a href="#" class="btn-cart btn-square style"><i class="fa fa-repeat"></i></a></li>
+                                    <li><a href="#" class="btn-cart btn-square btn-pink"><i class="fa fa-cog"></i></a></li>
+                                    <li><a href="#" class="btn-cart btn-square btn-blue"><i class="fa fa-trash-o"></i></a></li>
+                                </ul>
+                            </td>
+                          </tr>
+                          </c:forEach>
+                          
                           </tbody>
                       </table>
                    </div>

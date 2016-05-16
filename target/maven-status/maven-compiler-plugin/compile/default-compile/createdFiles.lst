@@ -3,6 +3,7 @@ com\cloudasset\service\RegisterService.class
 com\cloudasset\hibernate\util\HibernateUtil.class
 com\cloudasset\sample\LoginServlet.class
 com\cloudasset\model\Product.class
+com\cloudasset\controller\AddProduct.class
 com\cloudasset\sample\GetStatus.class
 com\cloudasset\service\LoginService.class
 com\cloudasset\sample\Global.class

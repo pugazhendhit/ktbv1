@@ -3,7 +3,8 @@
 <!--[if gt IE 9]><!-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html class="no-js">
 <!--<![endif]-->
@@ -525,6 +526,8 @@ Header
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
                         </td>
+                        
+                        
                         </tr> 
                         <tr class="table-body style">
                             <td></td>
@@ -1943,6 +1946,34 @@ Script Source
 <script src="assets/js/jquery.countdown.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$(".flytoQuickView").click(function() {
+
+        var $this = $(this),
+        $item, $container, $imgToDrag, $cart, $imgClone, $product,
+        targetTab = $this.data("qv-tab"),
+        currentTab = $(targetTab).find(".quickShoping-list"),
+        tabAct = $(".quickActions").find("a[href=" + targetTab + "]");
+        
+        $container = $this.closest('.products');
+        $item = $this.closest($container.data('product'));
+        $imgToDrag = $item.find($container.data('thumbnail'));
+        
+        $.ajax({
+            url: "AddProduct.do",
+            type: "POST",
+            data: "pid="+$item.data+"&name="+$item.data("name")+"&ctg="+$item.data("category")+"&price="+$item.data("price")+"&img="+$imgToDrag.attr("src"),
+            success: function(data, status) {
+            }
+        });
+        
+	});
+});
+
+</script>
 
 </body>
 </html>

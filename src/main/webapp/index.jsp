@@ -1944,5 +1944,77 @@ Script Source
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	var totalAmount = 0;
+	$(".product-buy").click(function() {
+		
+		var price = $(this).parent('.xv-product-content').find("span").html();
+		var img = $(this).parents('div.xv-product').find("a").html();
+		var header = $(this).parent('.xv-product-content').find("h3").html();
+		var list = $(this).parent('.xv-product-content').find("ul").html();
+		
+	  console.log(price); 
+	  console.log(img); 
+	  console.log(header); 
+	  console.log(list); 
+		  
+		/*
+		var imgtd = "<td><figure>"+img+"</figure></td>"
+		var h3litd = "<td><div class='cart-wrappper text-left'><h6>"+header+"</h6><p><span>Availability</span>: Available in Stock</p><p><span>Product Code</span>: CwT4a</p></div></td>"
+		var thirdtd = "<td><div class='quantity-control'><span class='btn-cart btn-square btn-plus btn-qty'><i class='fa fa-plus'></i></span><input type='text' value='2' data-min='1' data-minalert='Minimum limit reached' data-max='5' data-maxalert='Maximum limit reached' data-invalid='Enter valid quantity'><span class='btn-cart btn-square btn-minus btn-qty'><i class='fa fa-minus'></i></span></div></td>";
+		var pricetd = "<td><span class='cart-content'>Unit Price:</span><span class='cart-price'>"+price+"</span></td>";
+		var subpricetd = "<td><span class='cart-content'>Unit Price:</span><span class='cart-price'>$250</span></td>";
+		var cataction = "<td><a class='cart-action' href='#'><i class='fa fa-trash-o'></i></a></td>";
+		var $tr = "<tr class='table-body'>"+imgtd+h3litd+thirdtd+pricetd+subpricetd+cataction+"</tr>";
+		
+		$("tbody.shadow-around tr:last").before($tr);
+		
+		price = price.replace("$", "");
+		totalAmount = +totalAmount + +price;
+		$(".colpink").text("$"+totalAmount);
+		*/
+		
+	});
+	
+$(".product-buy").click(function() {
+		
+		var price = $(this).parent('.xv-product').find("span").html();
+		var img = $(this).parents('div.xv-product').find("a").html();
+		var header = $(this).parent('.xv-product-content').find("h3").html();
+		var list = $(this).parent('.xv-product-content').find("ul").html();
+		
+		console.log(price); 
+		  console.log(img); 
+		  console.log(header); 
+		  console.log(list); 
+		
+});
+	
+	
+	
+	/* $("#viewCart").click(function() {
+		var tbody = $("tbody.shadow-around").html();
+		
+		$.ajax({
+		     type: "POST",
+		     url: "cart.html?totalAmount="+totalAmount,
+		     data: tbody,
+		     dataType: "html",
+		     cache: true,
+		     success: function (html) {
+		    	 $("#indexPage").hide();
+		    	 $("#carPage").append(html);
+		    	 $("tbody.shadow-around").append(tbody);
+		     }
+	
+		 });		
+	}); */
+	
+});
+
+</script>
+
 </body>
 </html>

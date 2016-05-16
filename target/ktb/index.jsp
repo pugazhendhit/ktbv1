@@ -483,7 +483,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>
@@ -493,7 +493,7 @@ Header
                         </td>
                         <td>
                             <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿500</span>
+                            <span class="cart-price">฿250</span>
                         </td>
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
@@ -537,7 +537,11 @@ Header
                             </td>
                             <td></td>
                             <td></td>
-                            <td class="style">TOTAL:<span class="colpink">฿2031</span></td>
+                             <c:set var="htotal" value="1750" />
+                             <c:forEach items="${cart}" var="product">
+                             <c:set var="htotal" value="${htotal+product.unitPrice}" />
+                             </c:forEach>
+                            <td class="style">TOTAL:<span class="colpink">฿${htotal}</span></td>
                             <td></td>
                         </tr>
                       </tbody>
@@ -791,7 +795,7 @@ new items
                                         </figcaption>
                                     </figure>
                                     <div class="xv-product-content">
-                                        <h3><a href="">Smartphone Apple iPhone 5 64GB</a></h3>
+                                        <h3><a href="">Sony PS4 1TB</a></h3>
                                         <ul class="color-opt">
                                             <li><a href="#">White</a></li>
                                             <li><a href="#">Black</a></li>
@@ -815,9 +819,9 @@ new items
                                         </figcaption>
                                     </figure>
                                     <div class="xv-product-content">
-                                        <h3><a href="">Smartphone Apple iPhone 5 64GB</a></h3>
-                                        <ul class="color-opt">
-                                            <li><a href="#">White</a></li>
+                                      <h3><a>Panasonic 47cm(40) HD</a></h3>
+                                      <ul class="color-opt">
+                                        <li><a href="#">White</a></li>
                                             <li><a href="#">Black</a></li>
                                             <li><a href="#">Gold</a></li>
                                         </ul>
@@ -954,7 +958,7 @@ featured
                         </figcaption>
                      </figure><!--figure-->
                     <div class="xv-product-content">
-                        <h3><a href="">Smartphone Apple iPhone 5 64GB</a></h3>
+                        <h3><a href="">Canon AE1200</a></h3>
                         <ul class="color-opt">
                             <li><a href="#">White</a></li>
                             <li><a href="#">Black</a></li>
@@ -1002,7 +1006,7 @@ featured
                         </figcaption>
                         </figure><!--figure-->
                         <div class="xv-product-content">
-                            <h3><a href="">Smartphone Apple iPhone 5 64GB</a></h3>
+                            <h3><a href="">Samsung sIII 64GB</a></h3>
                             <ul class="color-opt">
                                 <li><a href="#">White</a></li>
                                 <li><a href="#">Black</a></li>
@@ -1026,9 +1030,9 @@ featured
                         </figcaption>
                         </figure><!--figure-->
                         <div class="xv-product-content">
-                            <h3><a href="">Smartphone Apple iPhone 5 64GB</a></h3>
-                            <ul class="color-opt">
-                                <li><a href="#">White</a></li>
+                          <h3><a>Beats Wifi </a></h3>
+                          <ul class="color-opt">
+                            <li><a href="#">White</a></li>
                                 <li><a href="#">Black</a></li>
                                 <li><a href="#">Gold</a></li>
                             </ul>

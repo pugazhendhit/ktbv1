@@ -536,7 +536,11 @@ Header
                             </td>
                             <td></td>
                             <td></td>
-                            <td class="style">TOTAL:<span class="colpink">฿2031</span></td>
+                             <c:set var="htotal" value="1750" />
+                             <c:forEach items="${cart}" var="product">
+                             <c:set var="htotal" value="${htotal+product.unitPrice}" />
+                             </c:forEach>
+                            <td class="style">TOTAL:<span class="colpink">฿${htotal}</span></td>
                             <td></td>
                         </tr>
                       </tbody>
@@ -713,7 +717,7 @@ cart content
                             <td>
                                 <div class="quantity-control">
                                     <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                    <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                    <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                     <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                                 </div>
                             </td>

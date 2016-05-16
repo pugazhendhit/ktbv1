@@ -499,7 +499,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>
@@ -509,7 +509,7 @@ Header
                         </td>
                         <td>
                             <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿500</span>
+                            <span class="cart-price">฿250</span>
                         </td>
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
@@ -527,7 +527,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>

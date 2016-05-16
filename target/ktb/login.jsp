@@ -3,7 +3,8 @@
 <!--[if gt IE 9]><!-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import="java.util.List"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 
 <html class="no-js">
 <!--<![endif]-->
@@ -507,7 +508,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>
@@ -517,7 +518,7 @@ Header
                         </td>
                         <td>
                             <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">$500</span>
+                            <span class="cart-price">$250</span>
                         </td>
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
@@ -535,7 +536,7 @@ Header
                         <td>
                             <div class="quantity-control">
                                 <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
+                                <input type="text" value="1" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
                             </div>
                         </td>
@@ -559,7 +560,11 @@ Header
                             </td>
                             <td></td>
                             <td></td>
-                            <td class="style">TOTAL:<span class="colpink">$2031</span></td>
+                            <c:set var="htotal" value="1750" />
+                             <c:forEach items="${cart}" var="product">
+                             <c:set var="htotal" value="${htotal+product.unitPrice}" />
+                             </c:forEach>
+                            <td class="style">TOTAL:<span class="colpink">฿${htotal}</span></td>
                             <td></td>
                         </tr>
                       </tbody>

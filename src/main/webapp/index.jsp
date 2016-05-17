@@ -1971,6 +1971,9 @@ $(document).ready(function() {
             type: "POST",
             data: "pid="+$item.data+"&name="+$item.data("name")+"&ctg="+$item.data("category")+"&price="+$item.data("price")+"&img="+$imgToDrag.attr("src"),
             success: function(data, status) {
+            	console.log("Success")
+            }, error:function(){
+            	console.log("Error")
             }
         });
         

@@ -50,7 +50,6 @@ public class AddProduct extends HttpServlet {
 		      session.setMaxInactiveInterval(1800);
 		    }
 		    System.out.println(pid + "," + name + "," + ctg + "," + price + "," + img);
-		    
 		    response.getWriter().append("Served at: ").append(request.getContextPath());
 		  }
 		  

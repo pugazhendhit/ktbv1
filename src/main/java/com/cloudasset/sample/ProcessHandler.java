@@ -78,9 +78,8 @@ public class ProcessHandler extends HttpServlet {
 		               paymentToken = (String) o.get("payment_token");
 		               message = (String) o.get("message");
 		            }
-		        //	Global.uuidMAp.put(paymentToken,uniqueID);
-		        	// Adding the Transaction ID to MAP
-		       // 	Global.invoiceMAp.put(uniqueID,nextIntInRange(START,END,new Random())+"");
+		        	Global.uuidMAp.put(paymentToken,uniqueID);
+		        	Global.invoiceMAp.put(uniqueID,nextIntInRange(START,END,new Random())+"");
 	            }
 			  } catch (Exception e) {
 				e.printStackTrace();

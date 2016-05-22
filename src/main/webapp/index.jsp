@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 
 <html class="no-js">
 <!--<![endif]-->
@@ -471,14 +472,15 @@ Header
                 <div class="table-responsive cart-calculations  text-center">
                   <table class="table">
                       <tbody class="shadow-around">
+                        <c:forEach items="${cart}" var="product">
                         <tr class="table-body">
-                        <td><figure><img src="assets/img/cart-img-1.png" alt=""/></figure></td>
+                        <td><figure><img src="<c:out value="${product.imagepath}"/>" alt=""/></figure></td>
                         <td>
                             <div class="cart-wrappper text-left">
-                                <h6>Sony Powershot G2530</h6>
+                                <h6><c:out value="${product.name}"/></h6>
                                 <p><span>Availability</span>: Available in Stock</p>
                                 <p><span>Product Code</span>: CwT4a</p> 
-                            </div>                             
+                            </div>     
                         </td>
                         <td>
                             <div class="quantity-control">
@@ -489,46 +491,18 @@ Header
                         </td>
                         <td>
                             <span class="cart-content">Unit Price:</span>
-                            <span class="cart-price">฿250</span>
+                            <span class="cart-price">฿<c:out value="${product.unitPrice}"/></span>
                         </td>
                         <td>
                             <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿250</span>
+                            <span class="cart-price">฿<c:out value="${product.unitPrice}"/></span>
                         </td>
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
                         </td>
                       </tr>
-                        <tr class="table-body">
-                        <td><figure><img src="assets/img/cart-img-2.png" alt=""/></figure></td>
-                        <td>
-                            <div class="cart-wrappper text-left">
-                                <h6>Macbook 2016</h6>
-                                <p><span>Availability</span>: Available in Stock</p>
-                                <p><span>Product Code</span>: CwT4a</p> 
-                            </div>                             
-                        </td>
-                        <td>
-                            <div class="quantity-control">
-                                <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
-                                <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
-                            </div>
-                        </td>
-                        <td>
-                            <span class="cart-content">Unit Price:</span>
-                            <span class="cart-price">฿1500</span>
-                        </td>
-                        <td>
-                            <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿1500</span>
-                        </td>
-                        <td>
-                            <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                        
-                        
-                        </tr> 
+                      
+                      </c:forEach>
                         <tr class="table-body style">
                             <td></td>
                             <td>
@@ -537,7 +511,7 @@ Header
                             </td>
                             <td></td>
                             <td></td>
-                             <c:set var="htotal" value="1750" />
+                             <c:set var="htotal" value="0" />
                              <c:forEach items="${cart}" var="product">
                              <c:set var="htotal" value="${htotal+product.unitPrice}" />
                              </c:forEach>

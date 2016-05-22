@@ -382,11 +382,12 @@ jQuery(function($) {
                     $(".qv-alert").removeClass("active");
                     isLockedAll = false;
                     $(".flytoQuickView").removeClass("locked");
+                    location.reload();
                 }, 2000);
 
             });
 
-
+      
     });
 
 

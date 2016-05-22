@@ -1338,7 +1338,12 @@ Header
     width: 800px;
     z-index: 1000;
     display: none;
-    overflow: visible;
+    overflow-y: scroll;
+}
+
+.cart-calculations .table {
+
+    margin-bottom: 0;
 }
 
 .header-bottom .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
@@ -5590,15 +5595,4 @@ http://tobiasahlin.com/spinkit/
         -webkit-transform: scale(1.0)
     }
 }
-
-@keyframes sk-bounce {
-    0%,
-    100% {
-        transform: scale(0.0);
-        -webkit-transform: scale(0.0);
-    }
-    50% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
-    }
 }

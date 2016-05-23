@@ -1346,6 +1346,11 @@ Header
     margin-bottom: 0;
 }
 
+.cart-calculations figure > img {
+    width: 40%;
+}
+
+
 .header-bottom .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
     padding: 36px 2px;
 }
@@ -5596,3 +5601,4 @@ http://tobiasahlin.com/spinkit/
     }
 }
 }
+

@@ -23,7 +23,18 @@ public class GetStatus extends HttpServlet {
 		String uuid = request.getParameter("uuid").toString();
 		String status = Global.statusMAp.get(uuid);
 		String invoiceId = Global.invoiceMAp.get(uuid) ;
+		
+		System.out.println("******* Get Status from Server , to show in order page (landing Page) *************");
+		System.out.println("Request Parmater : ");
+		System.out.println("-------------------");
+		System.out.println("uuid : "+uuid);
+
 		String json ="{\"staus\":\""+status+"\",\"invoiceId\":\""+invoiceId+"\"}";
+		System.out.println("Response  : ");
+		System.out.println("-------------------");
+		System.out.println("json  : "+json);
+		System.out.println("******* end *************");
+		
 		response.setContentType("application/json");
 		response.getWriter().write(json);
 	}

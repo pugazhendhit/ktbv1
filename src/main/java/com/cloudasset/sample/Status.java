@@ -23,6 +23,13 @@ public class Status extends HttpServlet {
 		String status   = request.getParameter("status").toString();
 		String uuid  = request.getParameter("uuid").toString();
 		
+		System.out.println("******* Status call logs *************");
+		System.out.println("Parameters :");
+		System.out.println("-----------*");
+		System.out.println("status : "+status);
+		System.out.println("uuid :"+uuid);
+		System.out.println("******* end *************");
+		
 		Global.statusMAp.put(uuid,status);
 	}
 

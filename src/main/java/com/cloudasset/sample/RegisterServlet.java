@@ -34,6 +34,7 @@ public class RegisterServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "http://119.160.221.121:3210/ecom/customers/";
+		//String url = "http://10.144.97.193:3000/ecom/customers/";
 		
 		try {
 			String firstname = request.getParameter("fn");
@@ -54,17 +55,22 @@ public class RegisterServlet extends HttpServlet {
 				StringEntity input = new StringEntity(json);
 				input.setContentType("application/json");
 				postRequest.setEntity(input);
+				
+				System.out.println("******* customer api call logs *************");
+				System.out.println("URL : http://119.160.221.121:3210/ecom/customers/");
+				System.out.println("JSON Request: "+json);
 				HttpResponse response1 = httpClient.execute(postRequest);
 				BufferedReader rd = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
 		        String line  = "";
 	            if(response1.getStatusLine().getStatusCode() == 201) {
 		            while ((line = rd.readLine()) != null) {
+		               System.out.println("JSON Response: "+line);
 		               JSONParser j = new JSONParser();
 		               JSONObject o = (JSONObject)j.parse(line);
 		               customer_id = (String) o.get("customer_id");
 		            }
 	            }
-	            
+	    		System.out.println("******* end *************");
 	            
 	            UserKTB userobj = new UserKTB(customer_id, usr, firstname, lastname, pwd);
 	            RegisterService service = new RegisterService();

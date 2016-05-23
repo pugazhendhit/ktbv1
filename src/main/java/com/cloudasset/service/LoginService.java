@@ -12,6 +12,7 @@ import com.cloudasset.model.UserKTB;
 public class LoginService {
 
     public boolean authenticateUser(String userId, String password) {
+    	
         UserKTB user = getUserByUserId(userId);          
         if(user!=null && user.getUemail().equals(userId) && user.getUpassword().equals(password)){
             return true;
@@ -21,6 +22,7 @@ public class LoginService {
     }
 
     public UserKTB getUserByUserId(String userId) {
+    	
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
         UserKTB user = null;
@@ -41,7 +43,8 @@ public class LoginService {
         return user;
     }
     
-    public List<UserKTB> getListOfUsers(){
+    public List<UserKTB> getListOfUsers() {
+    	
         List<UserKTB> list = new ArrayList<UserKTB>();
         Session session = HibernateUtil.openSession();
         Transaction tx = null;        

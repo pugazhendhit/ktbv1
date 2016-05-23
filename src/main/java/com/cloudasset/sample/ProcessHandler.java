@@ -35,12 +35,19 @@ public class ProcessHandler extends HttpServlet {
      */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	     	String url = "http://119.160.221.121:3210/ecom/invoices/";
-
+		
+//		    String local_ip = "10.144.97.193:3000/ktb";
+//		    String landing_ip = "119.160.221.121:3080/ktb";
+//          String url = "http://10.144.97.193:3000/ecom/invoices/";
+		
+		    String local_ip = "ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com";
+		    String landing_ip = "ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com";
+	    	String url = "http://119.160.221.121:3210/ecom/invoices/";
+	    	
 	     	 String paymentToken = null;
 	     	 String message = null;
 	 		 String json = null;
-	 		
+	 		 
 		     try {
 		    	LoginService service = new LoginService();
 		    
@@ -51,17 +58,21 @@ public class ProcessHandler extends HttpServlet {
 				if(user!= null){
 					json ="{\"secret_token\":\"abc123\",\"amount\":\""+request.getParameter("p")+"\","
 						+ "\"currency\":\"THB\","
-						+ "\"status_url\":\"http://ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com/status.do?uuid="+uniqueID+"\","
+						+ "\"status_url\":\"http://"+local_ip+"/status.do?uuid="+uniqueID+"\","
 						+ "\"customer_id\":\""+user.getCustomerid()+"\","
-						+ "\"landing_url\":\"http://ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com/order.jsp?uuid="+uniqueID+"\"}";
+						+ "\"collect_addresses\":\""+0+"\","
+						+ "\"landing_url\":\"http://"+landing_ip+"/order.jsp?uuid="+uniqueID+"\"}";
 				}else{
 					json ="{\"secret_token\":\"abc123\",\"amount\":\""+request.getParameter("p")+"\","
 							+ "\"currency\":\"THB\","
-							+ "\"status_url\":\"http://ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com/status.do?uuid="+uniqueID+"\","
-							+ "\"landing_url\":\"http://ktb-env.4nbepqprui.us-west-2.elasticbeanstalk.com/order.jsp?uuid="+uniqueID+"\"}";
+							+ "\"collect_addresses\":\""+0+"\","
+							+ "\"status_url\":\"http://"+local_ip+"/status.do?uuid="+uniqueID+"\","
+							+ "\"landing_url\":\"http://"+landing_ip+"/order.jsp?uuid="+uniqueID+"\"}";
 				}
 				
-				
+				System.out.println("******* invoices api call logs *************");
+				System.out.println("URL : http://119.160.221.121:3210/ecom/invoices/");
+				System.out.println("JSON Request: "+json);
 			    HttpClient httpClient = HttpClientBuilder.create().build();
 				HttpPost postRequest = new HttpPost(url);
 				postRequest.addHeader("Accept", "application/json");
@@ -73,6 +84,7 @@ public class ProcessHandler extends HttpServlet {
 		        String line  = "";
 	            if(response1.getStatusLine().getStatusCode() == 201){
 		            while ((line = rd.readLine()) != null) {
+		               System.out.println("JSON Response: "+line);
 		               JSONParser j = new JSONParser();
 		               JSONObject o = (JSONObject)j.parse(line);
 		               paymentToken = (String) o.get("payment_token");
@@ -81,11 +93,15 @@ public class ProcessHandler extends HttpServlet {
 		        	Global.uuidMAp.put(paymentToken,uniqueID);
 		        	Global.invoiceMAp.put(uniqueID,nextIntInRange(START,END,new Random())+"");
 	            }
+	        	System.out.println("******* end *************");
 			  } catch (Exception e) {
 				e.printStackTrace();
 			  } 
 		     
-		  	response.sendRedirect("http://119.160.221.121:3210/ecom/payments/"+paymentToken);
+		     System.out.println("******* Redirecting to payment gateway page *************");
+		     System.out.println("http://119.160.221.121:3210/ecom/payments/");
+		     
+		     response.sendRedirect("http://119.160.221.121:3210/ecom/payments/"+paymentToken);
 	}
 	
 	/* ------------------------------------------- */

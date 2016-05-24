@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 
 <html class="no-js">
 <!--<![endif]-->
@@ -469,16 +470,17 @@ Header
                 </ul>
                 <a href="#" class="openCart"></a>
                 <div class="table-responsive cart-calculations  text-center">
-                  <table class="table">
+                  <table class="table" id="auto_load_div" >
                       <tbody class="shadow-around">
+                        <c:forEach items="${cart}" var="product">
                         <tr class="table-body">
-                        <td><figure><img src="assets/img/cart-img-1.png" alt=""/></figure></td>
+                        <td><figure><img src="<c:out value="${product.imagepath}"/>" alt=""/></figure></td>
                         <td>
                             <div class="cart-wrappper text-left">
-                                <h6>Sony Powershot G2530</h6>
+                                <h6><c:out value="${product.name}"/></h6>
                                 <p><span>Availability</span>: Available in Stock</p>
                                 <p><span>Product Code</span>: CwT4a</p> 
-                            </div>                             
+                            </div>     
                         </td>
                         <td>
                             <div class="quantity-control">
@@ -489,46 +491,18 @@ Header
                         </td>
                         <td>
                             <span class="cart-content">Unit Price:</span>
-                            <span class="cart-price">฿250</span>
+                            <span class="cart-price">฿<c:out value="${product.unitPrice}"/></span>
                         </td>
                         <td>
                             <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿250</span>
+                            <span class="cart-price">฿<c:out value="${product.unitPrice}"/></span>
                         </td>
                         <td>
                             <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
                         </td>
                       </tr>
-                        <tr class="table-body">
-                        <td><figure><img src="assets/img/cart-img-2.png" alt=""/></figure></td>
-                        <td>
-                            <div class="cart-wrappper text-left">
-                                <h6>Macbook 2016</h6>
-                                <p><span>Availability</span>: Available in Stock</p>
-                                <p><span>Product Code</span>: CwT4a</p> 
-                            </div>                             
-                        </td>
-                        <td>
-                            <div class="quantity-control">
-                                <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
-                                <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>                      
-                            </div>
-                        </td>
-                        <td>
-                            <span class="cart-content">Unit Price:</span>
-                            <span class="cart-price">฿1500</span>
-                        </td>
-                        <td>
-                            <span class="cart-content">Sub Price:</span>
-                            <span class="cart-price">฿1500</span>
-                        </td>
-                        <td>
-                            <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                        
-                        
-                        </tr> 
+                      
+                      </c:forEach>
                         <tr class="table-body style">
                             <td></td>
                             <td>
@@ -537,7 +511,7 @@ Header
                             </td>
                             <td></td>
                             <td></td>
-                             <c:set var="htotal" value="1750" />
+                             <c:set var="htotal" value="0" />
                              <c:forEach items="${cart}" var="product">
                              <c:set var="htotal" value="${htotal+product.unitPrice}" />
                              </c:forEach>
@@ -783,7 +757,7 @@ new items
                                     </div>
                                 </div>
 
-                                <div data-pid="xyz101" data-name="Smartphone Apple iPhone 5 64GB" data-category="gaming" data-price="230" class="xv-product style shadow-around">
+                                <div data-pid="xyz101" data-name="Sony PS4 1TB" data-category="gaming" data-price="230" class="xv-product style shadow-around">
                                     <figure>
                                         <a href="#"><img class="xv-superimage" src="assets/img/news-img-2.png" alt=""/></a>
                                         <figcaption>
@@ -807,7 +781,7 @@ new items
                                     </div>
                                 </div>
 
-                                <div data-pid="xyz102" data-name="Smartphone Apple iPhone 5 64GB" data-category="tv" data-price="130" class="xv-product style shadow-around">
+                                <div data-pid="xyz102" data-name="Panasonic 47cm(40) HD" data-category="tv" data-price="130" class="xv-product style shadow-around">
                                     <figure>
                                         <a href="#"><img class="xv-superimage" src="assets/img/news-img-3.png" alt=""/></a>
                                         <figcaption>
@@ -946,7 +920,7 @@ featured
             <div class="xv-product-slides mt-25 mb-25">
                 <div class="owl-carousel slider_controls1 products" data-thumbnail="figure .xv-superimage"  data-product=".xv-product"  data-dots="false" data-prev="fa fa-angle-left" data-next="fa fa-angle-right" data-slides="4" data-slides-md="2" data-slides-sm="1" data-margin="24" data-loop="true" data-nav="true">
 
-                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250"  class="xv-product style shadow-around">
+                    <div data-pid="xyz200" data-name="Canon AE1200" data-category="mobiles" data-price="250"  class="xv-product style shadow-around">
                      <figure>
                         <a href="#"><img class="xv-superimage" src="assets/img/featured-img-1.png" alt=""/></a>
                         <figcaption>
@@ -994,7 +968,7 @@ featured
                             </div>
                     </div><!--xv-product-->
 
-                    <div data-pid="xyz202" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250"  class="xv-product style shadow-around">
+                    <div data-pid="xyz202" data-name="Samsung sIII 64GB" data-category="mobiles" data-price="250"  class="xv-product style shadow-around">
                         <figure>
                             <a href="#"><img class="xv-superimage" src="assets/img/featured-img-3.png" alt=""/></a>
                             <figcaption>
@@ -1225,7 +1199,7 @@ Sales
                     <div class="xv-sales">
                         <div class="row">
                             <div class="col-xs-12 col-md-6 no-pad">
-                                <div data-pid="xyz300" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-50">
+                                <div data-pid="xyz300" data-name="iPad Air 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-50">
                                     <figure>
                                         <img class="xv-superimage" src="assets/img/ipad.png" alt="">
                                         <figcaption class="style">
@@ -1286,7 +1260,7 @@ Sales
 
                                 <div class="row inner-row">
                                     <div class="col-xs-12 col-sm-6 no-pad">
-                                        <div data-pid="xyz303" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-left border-right">
+                                        <div data-pid="xyz303" data-name="Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-left border-right">
                                             <figure>
                                                 <img class="xv-superimage" src="assets/img/macbook.png" alt="">
                                                 <figcaption>
@@ -1304,7 +1278,7 @@ Sales
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 no-pad">
-                                        <div data-pid="xyz304" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
+                                        <div data-pid="xyz304" data-name="Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
                                             <figure>
                                                 <img class="xv-superimage" src="assets/img/htc.png" alt="">
                                                 <figcaption>
@@ -1332,7 +1306,7 @@ Sales
                     <div class="xv-sales">
                         <div class="row">
                             <div class="col-xs-12 col-md-6 no-pad">
-                                <div data-pid="xyz300" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-50">
+                                <div data-pid="xyz300" data-name="iPad Air 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-50">
                                     <figure>
                                         <img class="xv-superimage" src="assets/img/ipad.png" alt="">
                                         <figcaption class="style">
@@ -1411,7 +1385,7 @@ Sales
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 no-pad">
-                                        <div data-pid="xyz304" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
+                                        <div data-pid="xyz304" data-name="Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
                                             <figure>
                                                 <img class="xv-superimage" src="assets/img/htc.png" alt="">
                                                 <figcaption>
@@ -1536,7 +1510,7 @@ Best Sellers
                 <div class="xv-best-seller">
                     <div class="row border-bottom">
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz401" data-name="Sony Bravia W650A" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/macbook.png" alt="">
                                     <figcaption>
@@ -1554,7 +1528,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz402" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz402" data-name="Apple iPhone 5C" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/5c.png" alt="">
                                     <figcaption>
@@ -1572,7 +1546,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz403" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz403" data-name="New Macbook 2016" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/mac-2015.png" alt="">
                                     <figcaption>
@@ -1590,7 +1564,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz404" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
+                            <div data-pid="xyz404" data-name="iPad Air 2" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/ipad-air-2.png" alt="">
                                     <figcaption>
@@ -1609,7 +1583,7 @@ Best Sellers
                     </div><!--top-row-->
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz405" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz405" data-name="Samsung Galaxy S6" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/s6.png" alt="">
                                     <figcaption>
@@ -1627,7 +1601,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz406" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz406" data-name="Leica Camera" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/leica.png" alt="">
                                     <figcaption>
@@ -1645,7 +1619,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz407" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz407" data-name="HTC One" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/htc.png" alt="">
                                     <figcaption>
@@ -1663,7 +1637,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz408" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
+                            <div data-pid="xyz408" data-name="Leica Camera" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/leica-2.png" alt="">
                                     <figcaption>
@@ -1684,7 +1658,7 @@ Best Sellers
                 <div class="xv-best-seller">
                     <div class="row border-bottom">
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz501" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz501" data-name="Sony Bravia W650A" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/macbook.png" alt="">
                                     <figcaption>
@@ -1702,7 +1676,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz502" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz502" data-name="Apple iPhone 5C" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/5c.png" alt="">
                                     <figcaption>
@@ -1720,7 +1694,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz503" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz503" data-name="New Macbook 2016" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/mac-2015.png" alt="">
                                     <figcaption>
@@ -1738,7 +1712,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz504" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
+                            <div data-pid="xyz504" data-name="iPad Air 2" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/ipad-air-2.png" alt="">
                                     <figcaption>
@@ -1757,7 +1731,7 @@ Best Sellers
                     </div><!--top-row-->
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz505" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz505" data-name="Samsung Galaxy S6" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/s6.png" alt="">
                                     <figcaption>
@@ -1775,7 +1749,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz506" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz506" data-name="Leica Camera" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/leica.png" alt="">
                                     <figcaption>
@@ -1793,7 +1767,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz507" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="xyz507" data-name="HTC One" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/htc.png" alt="">
                                     <figcaption>
@@ -1811,7 +1785,7 @@ Best Sellers
                         </div><!--column-->
 
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz508" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
+                            <div data-pid="xyz508" data-name="Leica Camera" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30">
                                 <figure>
                                     <img class="xv-superimage" src="assets/img/leica-2.png" alt="">
                                     <figcaption>
@@ -1971,6 +1945,10 @@ $(document).ready(function() {
             type: "POST",
             data: "pid="+$item.data+"&name="+$item.data("name")+"&ctg="+$item.data("category")+"&price="+$item.data("price")+"&img="+$imgToDrag.attr("src"),
             success: function(data, status) {
+            	console.log("Success")
+            	$("#auto_load_div").load( "index.jsp #auto_load_div" );
+            }, error:function(){
+            	console.log("Error")
             }
         });
         

@@ -1,0 +1,15 @@
+com\cloudasset\model\UserKTB.class
+com\cloudasset\service\RegisterService.class
+com\cloudasset\hibernate\util\HibernateUtil.class
+com\cloudasset\sample\LoginServlet.class
+com\cloudasset\model\Product.class
+com\cloudasset\controller\AddProduct.class
+com\cloudasset\sample\GetStatus.class
+com\cloudasset\service\LoginService.class
+com\cloudasset\sample\Global.class
+com\cloudasset\model\Pauthorize.class
+com\cloudasset\model\Pproduct.class
+com\cloudasset\sample\RegisterServlet.class
+com\cloudasset\sample\Status.class
+com\cloudasset\sample\LogoutServlet.class
+com\cloudasset\sample\ProcessHandler.class

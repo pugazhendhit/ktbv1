@@ -1329,6 +1329,7 @@ Header
     color: #5fb7ea;
     text-decoration: none;
 }
+
 .header-bottom .cart-calculations{
     position: absolute;
     right: 0;
@@ -1340,6 +1341,15 @@ Header
     display: none;
     overflow: visible;
 }
+
+.cart-calculations .table {
+    margin-bottom: 0;
+}
+
+.cart-calculations figure > img {
+    width: 60%;
+}
+
 
 .header-bottom .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
     padding: 36px 2px;
@@ -5590,15 +5600,5 @@ http://tobiasahlin.com/spinkit/
         -webkit-transform: scale(1.0)
     }
 }
-
-@keyframes sk-bounce {
-    0%,
-    100% {
-        transform: scale(0.0);
-        -webkit-transform: scale(0.0);
-    }
-    50% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
-    }
 }
+

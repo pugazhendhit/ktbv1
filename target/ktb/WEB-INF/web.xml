@@ -8,50 +8,42 @@
   <display-name>Archetype Created Web Application</display-name>
   
   <servlet>
+    <display-name>ProcessHandler</display-name>
   	<servlet-name>ProcessHandler</servlet-name>
-  	<display-name>ProcessHandler</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.sample.ProcessHandler</servlet-class>
   </servlet>
   <servlet>
+    <display-name>GetStatus</display-name>
   	<servlet-name>GetStatus</servlet-name>
-  	<display-name>GetStatus</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.sample.GetStatus</servlet-class>
   </servlet>
   
   <servlet>
+    <display-name>Status</display-name>
   	<servlet-name>Status</servlet-name>
-  	<display-name>Status</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.sample.Status</servlet-class>
   </servlet>
   
   <servlet>
+    <display-name>LoginSevlet</display-name>
   	<servlet-name>LoginSevlet</servlet-name>
-  	<display-name>LoginSevlet</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.sample.LoginSevlet</servlet-class>
   </servlet>
   <servlet>
+    <display-name>RegisterServlet</display-name>
   	<servlet-name>RegisterServlet</servlet-name>
-  	<display-name>RegisterServlet</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.sample.RegisterServlet</servlet-class>
   </servlet>
   <servlet>
+    <display-name>LogoutServlet</display-name>
   	<servlet-name>LogoutServlet</servlet-name>
-  	<display-name>LogoutServlet</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.sample.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
+   	<display-name>AddProduct</display-name>
   	<servlet-name>AddProduct</servlet-name>
-  	<display-name>AddProduct</display-name>
-  	<description></description>
   	<servlet-class>com.cloudasset.controller.AddProduct</servlet-class>
   </servlet>
-
   <servlet-mapping>
   	<servlet-name>ProcessHandler</servlet-name>
   	<url-pattern>/PayProcess.do</url-pattern>
@@ -61,12 +53,10 @@
   	<servlet-name>GetStatus</servlet-name>
   	<url-pattern>/getStatus.do</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
   	<servlet-name>Status</servlet-name>
   	<url-pattern>/status.do</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
   	<servlet-name>LoginSevlet</servlet-name>
   	<url-pattern>/LoginSevlet.do</url-pattern>
@@ -83,7 +73,5 @@
   	<servlet-name>AddProduct</servlet-name>
   	<url-pattern>/AddProduct.do</url-pattern>
   </servlet-mapping>
-  
 
-  
 </web-app>

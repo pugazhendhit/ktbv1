@@ -470,7 +470,7 @@ Header
                 </ul>
                 <a href="#" class="openCart"></a>
                 <div class="table-responsive cart-calculations  text-center">
-                  <table class="table">
+                  <table class="table" id="auto_load_div" >
                       <tbody class="shadow-around">
                         <c:forEach items="${cart}" var="product">
                         <tr class="table-body">
@@ -1946,6 +1946,7 @@ $(document).ready(function() {
             data: "pid="+$item.data+"&name="+$item.data("name")+"&ctg="+$item.data("category")+"&price="+$item.data("price")+"&img="+$imgToDrag.attr("src"),
             success: function(data, status) {
             	console.log("Success")
+            	$("#auto_load_div").load( "index.jsp #auto_load_div" );
             }, error:function(){
             	console.log("Error")
             }

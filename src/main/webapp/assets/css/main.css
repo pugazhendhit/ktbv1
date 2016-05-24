@@ -1329,6 +1329,7 @@ Header
     color: #5fb7ea;
     text-decoration: none;
 }
+
 .header-bottom .cart-calculations{
     position: absolute;
     right: 0;
@@ -1338,16 +1339,15 @@ Header
     width: 800px;
     z-index: 1000;
     display: none;
-    overflow-y: scroll;
+    overflow: visible;
 }
 
 .cart-calculations .table {
-
     margin-bottom: 0;
 }
 
 .cart-calculations figure > img {
-    width: 40%;
+    width: 60%;
 }
 
 
